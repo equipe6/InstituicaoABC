@@ -1,5 +1,8 @@
-# InstituicaoABC-BackEnd
-Repositorio para codigo fonte do backEnd trabalho pós
+# InstituicaoABC
+
+Repositorio para codigo fonte do projeto InstituicaoABC.
+
+- https://instituicaoabc.herokuapp.com
 
 ### Integrantes:
 - Emerson Alves Beier
