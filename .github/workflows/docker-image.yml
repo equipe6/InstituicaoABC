@@ -14,11 +14,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag instituicao-ensino-abc-img
+    #- name: Build the Docker image
+    #  run: docker build . --file Dockerfile --tag instituicao-ensino-abc-img
     - uses: akhileshns/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "instituicaoabc"
         heroku_email: "emersonabeier@hotmail.com"
         usedocker: true
+        rollbackonhealthcheckfailed: true
