@@ -85,7 +85,7 @@ namespace Application.Services
 
         public bool Delete(string id)
         {
-            if ( ! Guid.TryParse(id, out Guid usuarioId))
+            if ( !Guid.TryParse(id, out Guid usuarioId))
                 throw new Exception("UsuarioId nao e valido");
 
             Usuario _usuario = this.usuarioRepository.Find(x => x.Id == usuarioId);
@@ -105,6 +105,7 @@ namespace Application.Services
 
             Usuario _usuario = this.usuarioRepository.Find(x => x.Email.ToLower() == usuario.Email.ToLower()
                                                     && x.Senha.ToLower() == usuario.Senha.ToLower());
+
             if (_usuario == null)
                 throw new Exception("Usuario nao encontrado");
 

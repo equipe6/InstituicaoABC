@@ -29,7 +29,7 @@ namespace InstituicaoEnsinoABC.Builders
                 InformacoesAlunoRequestDTO = new InformacoesAlunoRequestDTO
                 {
                     Nome = _aluno.NomeCompleto,
-                    CPF = _aluno.Cpf,
+                    CPF = _aluno.Matricula,
                     Email = String.Empty,
                     Phone = string.Empty
                 },

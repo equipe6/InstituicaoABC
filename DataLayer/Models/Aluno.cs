@@ -11,17 +11,22 @@ namespace DataLayer.Models
         {
             Contratos = new HashSet<Contrato>();
             Pagamentos = new HashSet<Pagamento>();
-            Usuarios = new HashSet<Usuario>();
+            Documentos = new HashSet<Documento>();
         }
 
         public int Id { get; set; }
-        public string NomeCompleto { get; set; }
-        public string Cpf { get; set; }
-        public DateTime? DataNascimento { get; set; }
-        public string EnderecoCompleto { get; set; }
+
+        public string Matricula { get; set; }
+
+        public int IdPessoa { get; set; }
 
         public virtual ICollection<Contrato> Contratos { get; set; }
+
         public virtual ICollection<Pagamento> Pagamentos { get; set; }
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+
+        public virtual Pessoa Pessoa { get; set; }
+
+        public virtual ICollection<Documento> Documentos { get; set; }
+       
     }
 }

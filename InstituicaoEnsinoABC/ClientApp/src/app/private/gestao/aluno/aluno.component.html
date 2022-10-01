@@ -1,0 +1,130 @@
+<app-nav-menu [sistema]="sistema" [modulo]="modulo"></app-nav-menu>
+
+<main class="content min-vh-100">
+  <app-nav-bar></app-nav-bar>
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+      <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+          <li class="breadcrumb-item">
+            <a href="home">
+              <fa-icon [icon]="faHome"></fa-icon>
+            </a>
+          </li>
+          <li class="breadcrumb-item"><a href="#">Gestão</a></li>
+          <li class="breadcrumb-item"><a href="alunos">{{titulo}}</a></li>
+          <li class="breadcrumb-item active capitalize" aria-current="page">{{acao}}</li>
+        </ol>
+      </nav>
+      <h2 class="h4">{{titulo}}</h2>
+      <p class="mb-0"></p>
+    </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <a href="alunos" class="btn btn-sm btn-secondary d-inline-flex align-items-center">
+        <span class="me-1">
+          <fa-icon [icon]="faArrowLeft"></fa-icon>
+        </span>
+        Voltar
+      </a>
+    </div>
+  </div>
+
+  <form>
+    <div class="row">
+      <div class="col-12 mb-4">
+        <div class="card border-0 shadow components-section">
+          <div class="card-body">
+            <div class="row mb-4">
+              <div class="col-md-4 mb-3">
+                <div class="mb-4">
+                  <label class="my-1 me-2" for="pessoas">Pessoa</label>
+                  <select class="form-select"(change)="onPessoaSelected()" id="inputAluno" aria-label="Pessoa"
+                                    name="pessoa_id" [(ngModel)]="aluno.pessoa_id">
+                  <option value="{{pessoa.idPessoa}}" *ngFor="let pessoa of pessoas">{{pessoa.nomeCompleto}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div>
+                  <label for="inputMatricula">Matricula <span>*</span></label>
+                  <input class="form-control" id="inputMatricula" type="text" placeholder="Insira a matrícula do aluno" name="matricula"
+                    [(ngModel)]="aluno.matricula" [disabled]="isDisabled" required>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div>
+                  <label for="inputDescricao">Descricao do documento</label>
+                  <input class="form-control" 
+                        id="inputDescricao" 
+                        type="Text" 
+                        placeholder="Adicione o nome do documento" 
+                        name="documentoDescricao" 
+                        [(ngModel)]="documento.descricao">
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div>
+                  <label for="inputDocumento">Documento</label>
+                  <input class="form-control" id="inputDocumento" type="file" placeholder="Adicione o documento" name="documento"
+                  (change)="loadArquivo($event)">
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div>
+                  <button class="btn btn-primary float-end capitalize" type="button"
+                  (click)="loadDocumentoInfo()"> Adicionar documento</button>
+                </div>
+              </div>
+              <table class="table table-hover">
+                  <thead class="thead-light">
+                    <tr>
+                      <th class="border-gray-200">Nome Documento</th>
+                      <th class="border-gray-200">Descrição Documento</th>
+                      <th class="border-gray-200 text-right">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let doc of documentos">
+                      <td>
+                        <span class="fw-normal">{{doc.nomeDocumento}}</span>
+                      </td>
+                      <td>
+                        <span class="fw-normal">{{doc.descricao}}</span>
+                      </td>
+                      <td class="text-right">
+                        <a  (click)="olhaDocumento(doc.idDocumento)" class="btn btn-sm btn-info d-inline-flex align-items-center me-2">
+                          <span class="me-1">
+                            <fa-icon [icon]="faSearch"></fa-icon>
+                          </span>
+                          Detalhes
+                        </a>
+                        <a (click)="deletarDocumento(doc.idDocumento)" class="btn btn-sm btn-danger d-inline-flex align-items-center me-2"
+                          >
+                          <span class="me-1">
+                            <fa-icon [icon]="faTrash"></fa-icon>
+                          </span>
+                          Remover
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              <div class="col-md-12 mb-3" *ngIf="acao != 'detalhes'">
+                <button class="btn btn-{{acao == 'remover' ? 'danger' : 'primary'}} float-end capitalize" type="button"
+                  (click)="onSubmit()">
+                  {{acao}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            * campos obrigatórios
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <app-footer [sistema]="sistema" [modulo]="modulo"></app-footer>
+</main>

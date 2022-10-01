@@ -11,10 +11,11 @@ namespace InstituicaoEnsinoABC.ViewModels
     {
         public int Id { get; set; }
         public string NomeCompleto { get; set; }
-        public string Cpf { get; set; }
-        public string DataNascimento { get; set; }
-        public string EnderecoCompleto { get; set; }
+        public string Matricula { get; set; }
         public List<ContratoViewModel> Contratos { get; set; }
         public List<PagamentoViewModel> PagamentoViewModels { get; set; }
+        public List<DocumentoViewModel> Documentos { get; set; }
+
+        public int IdPessoa { get; set; }
     }
 }

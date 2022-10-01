@@ -4,12 +4,8 @@ using DataLayer.Repositories;
 using Domain.Interfaces;
 using InstituicaoEnsinoABC.Services;
 using InstituicaoEnsinoABC.Services.ApiClient;
+using InstituicaoEnsinoABC.Services.Interface.services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InstituicaoEnsinoABC.IoC
 {
@@ -20,13 +16,11 @@ namespace InstituicaoEnsinoABC.IoC
             #region Services
 
             services.AddScoped<IUsuarioService, UsuarioService>();
-
-            // services.AddScoped<AnamneseService>();
+            services.AddScoped<IPessoaService, PessoaService>();
+            services.AddScoped<IDocumentoService, DocumentoService>();
             services.AddScoped<ClientCommunicationService>();
             services.AddScoped<ContratoService>();
             services.AddScoped<AlunoService>();
-            // services.AddScoped<MedicamentoService>();
-            // services.AddScoped<VacinaService>();
 
             #endregion
 

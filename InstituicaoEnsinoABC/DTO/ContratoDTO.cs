@@ -28,7 +28,7 @@ namespace InstituicaoEnsinoABC.DTO
 
         public static ParcelaViewModel ParcelaDataTransferObject(Parcela _parcela)
         {
-            ParcelaViewModel _parcelaViewModel = new ParcelaViewModel
+            var _parcelaViewModel = new ParcelaViewModel
             {
                 Id = _parcela.Id,
                 NumeroParcela = _parcela.NumeroParcela,

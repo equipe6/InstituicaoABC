@@ -12,8 +12,8 @@ namespace DataLayer.Models
         public string Senha { get; set; }
         public string Email { get; set; }
         public ulong FlagAdmin { get; set; }
-        public int? IdAluno { get; set; }
+        public int? IdPessoa { get; set; }
 
-        public virtual Aluno IdAlunoNavigation { get; set; }
+        public virtual Pessoa PessoaNavigation { get; set; }
     }
 }
