@@ -39,7 +39,7 @@ namespace InstituicaoEnsinoABC.Controllers
 
             var aluno = this._alunoService.CreateAluno(alunoViewModel);
 
-            alunoViewModel.Documentos.Select(a => a.IdAluno = aluno.Id);
+            alunoViewModel.Documentos.Select(a => a.IdAluno = aluno.Id).FirstOrDefault();
 
             foreach (var documento in alunoViewModel.Documentos)
             {

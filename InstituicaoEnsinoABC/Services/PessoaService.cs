@@ -5,6 +5,7 @@ using InstituicaoEnsinoABC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace InstituicaoEnsinoABC.Services
 {
@@ -19,10 +20,14 @@ namespace InstituicaoEnsinoABC.Services
 
         public PessoaViewModel CreatePessoa(PessoaViewModel pessoaViewModel)
         {
+            string pattern = @"[-.]";
+            string replacement = "";
+            Regex rgx = new Regex(pattern);
+            string cpfLimpo = rgx.Replace(pessoaViewModel.Cpf, replacement);
             var pessoa = new Pessoa
             {
                 NomeCompleto = pessoaViewModel.NomeCompleto,
-                Cpf = pessoaViewModel.Cpf,
+                Cpf = cpfLimpo,
                 DataNascimento = pessoaViewModel.DataNascimento,
                 Email = pessoaViewModel.Email
             };

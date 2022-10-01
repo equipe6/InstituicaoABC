@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { StoreService } from '../../store.service';
 import { faHome, faUserGraduate, faUsers, faSyringe, faFileSignature, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
-// import { InternoDataService } from '../../_data-services/interno.data-service';
-// import { AnamneseDataService } from '../../_data-services/anamnese.data-service';
-// import { ChecklistDataService } from '../../_data-services/checklist.data-service';
-
+import { AlunoDataService } from 'src/app/_data-services/aluno.data-service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -30,11 +27,13 @@ export class HomeComponent {
 
   constructor(
     private store: StoreService,
+    private alunoDataService: AlunoDataService
     // private internoDataService: InternoDataService,
     // private anamneseDataService: AnamneseDataService,
     // private checklistDataService: ChecklistDataService
   ) {
     this.usuarioLogado = store._usuarioLogado;
+    this.alunoDataService = alunoDataService;
   }
 
   ngOnInit() {
@@ -44,11 +43,11 @@ export class HomeComponent {
   }
 
   getAlunos() {
-    // this.internoDataService.getAll().subscribe((data:any[]) => {
-    //   this.totalAlunos = data.length;
-    // }, error => {
-    //   console.log(error);
-    // });
+    this.alunoDataService.getAll().subscribe((data:any[]) => {
+      this.totalAlunos = data.length;
+    }, error => {
+      console.log(error);
+    });
   }
 
   getContratos() {

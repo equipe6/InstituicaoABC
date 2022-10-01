@@ -174,6 +174,14 @@ export class AlunoComponent {
       this.aluno.documentos = this.documentos;
       this.documento = {}
   }
+
+  olhaDocumento(idDocumento){
+
+  }
+
+  deletarDocumento(idDocumento){
+
+  }
 }
 
 

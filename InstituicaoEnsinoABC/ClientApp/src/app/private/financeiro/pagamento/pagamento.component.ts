@@ -58,4 +58,8 @@ export class PagamentoComponent {
       alert('Falha na operação');
     })
   }
+
+  onSubmit(){
+    console.log('nada');
+  }
 }

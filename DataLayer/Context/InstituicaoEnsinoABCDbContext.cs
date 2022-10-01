@@ -5,8 +5,6 @@ using DataLayer.Mappings;
 using DataLayer.Extensions;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-#nullable disable
-
 namespace DataLayer.Context
 {
     public partial class InstituicaoEnsinoABCDbContext : DbContext
@@ -24,15 +22,12 @@ namespace DataLayer.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source=sqlitedemo.db");
+                optionsBuilder.UseMySql("server=iu51mf0q32fkhfpl.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;port=3306;database=e1npnncfcmgsxuw7;user=kqpfoeb5hqbt3lqp;password=yd3uv31oih2a7b5k", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.25-mariadb"));
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasCharSet("utf8mb4")
-                .UseCollation("utf8mb4_0900_ai_ci");
-
             modelBuilder.ApplyConfiguration(new PessoaMap());
             modelBuilder.ApplyConfiguration(new DocumentoMap());
             modelBuilder.ApplyConfiguration(new UsuarioMap());
